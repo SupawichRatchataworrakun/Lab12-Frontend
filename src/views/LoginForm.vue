@@ -61,13 +61,15 @@ export default {
       schema
     }
   },
-  methods:{
-    handleLogin(user){
-     
-      AuthService.login(user).then(() => {
-        this.$router.push({name: 'EventList'})
-      })
-     
+  methods: {
+    handleLogin(user) {
+      AuthService.login(user)
+        .then(() => {
+          this.$router.push({ name: 'EventList' })
+        })
+        .catch(() => {
+          this.message = 'could not login'
+        })
     }
   }
 }
